@@ -20,6 +20,8 @@
 
 ## Quick Start
 
+For those use hermes, just tell CLI to use /run.py.Remember to tell it save this process as a skill.
+
 ```bash
 # 1. Install dependencies
 pip install fastapi uvicorn pydantic

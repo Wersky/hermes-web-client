@@ -20,6 +20,8 @@
 
 ## 快速开始
 
+当然你也可以直接跟hermes说：“兄弟，你去运行一下run.py”，然后让他把这个过程设置为一项技能即可
+
 ```bash
 # 1. 安装依赖
 pip install fastapi uvicorn pydantic
