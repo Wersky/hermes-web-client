@@ -8,19 +8,24 @@
 
 ![screenshot](screenshots/main.png)
 
+## Why
+
+Every day I'd open hermes CLI, start a new session, and say "hey deepseek, take me back to yesterday's conversation" — then it'd pull up the one from the day before (ˉ▽ˉ；)... Even manually listing sessions meant: mouse → copy → `hermes --resume xxxxxx`. Come on, man!
+
 ## Features
 
 - **Three-panel Web UI** — session list / chat / skills & memory, Linear dark theme
 - **SSE streaming tool calls** — real-time display of every tool the agent runs (`🔍 search_files → 📖 read_file → 💻 terminal`)
 - **Session management** — browse history, delete, right-click details (tokens / cost / model), non-blocking switching
 - **Session continuation** — based on `hermes chat -q --resume`, multi-turn conversations stay in one session
-- **Dangerous command confirmation** — detects blocked dangerous commands, modal approval → `--yolo` retry
+- **Dangerous command confirmation** — detects blocked dangerous commands, modal approval → `--yolo` retry (still fixing this TT)
 - **i18n (Chinese / English)** — switch UI language in settings with one click
 - **Zero frontend dependencies** — single-file SPA, no npm / webpack
+- **Low overhead** — SQLite-based storage, at most ~10% slower than raw hermes CLI
 
 ## Quick Start
 
-For those use hermes, just tell CLI to use /run.py.Remember to tell it save this process as a skill.
+You can also just tell hermes: "hey, run run.py for me" and save it as a skill.
 
 ```bash
 # 1. Install dependencies
@@ -89,6 +94,16 @@ Browser ──SSE──→ FastAPI ──subprocess──→ hermes -z "msg"    
 - **Backend**: Python / FastAPI / SSE / SQLite
 - **Frontend**: Vanilla JS / Single-file SPA / CSS Variables
 - **CLI Integration**: Hermes Agent subprocess + SQLite direct-read polling
+
+## Bugs & Notes
+
+This is v1.0 — plenty of bugs. The tool call display can't be as detailed as the CLI since we're in a browser, and the SQLite polling adds ~10% overhead. Web clients, man... they're just not as smooth TT
+
+Also this is my first time publishing a proper GitHub repo and III honestly don't know what to write here 😰😰😰
+
+## Future
+
+Planning to migrate to an MCP client architecture: user input → underlying CLI → session output, with only I/O overhead for maximum performance.
 
 ## License
 
